@@ -5,7 +5,7 @@
 	{
 		// --- set up your own database here
 		const DEFAULT_URL = 'https://twitterdata-b072d.firebaseio.com/';
-		const DEFAULT_TOKEN = 'AIzaSyBOqpRsIUGV18uOc3raijvDhfMzgGA8WpE';
+		const DEFAULT_TOKEN = 'GPqqTFPpI7dvxWeiM4Jp0unEsQyAwF5oDHQyizp0';
 		
 		protected $_firebase;
 		protected $_todoMilk = array(
