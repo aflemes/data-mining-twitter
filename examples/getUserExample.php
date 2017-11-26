@@ -14,7 +14,7 @@
 	);
 
 	$url = 'https://api.twitter.com/1.1/statuses/user_timeline.json';
-	$getfield = '?screen_name=G1';
+	$getfield = '?screen_name=G1&count=1';
 	$requestMethod = 'GET';
 
 	$twitter = new TwitterAPIExchange($settings);
@@ -48,8 +48,8 @@
 	}
 		
 	$_firebase = new firebaseTest();
-	$_firebase->setTimeout(60);
 	$_firebase->setUp();
+	$_firebase->setTimeout(120);
 	
 	foreach($tweets as $elements){
 		$path = "tweet/".$elements['_tweetId'];
@@ -57,4 +57,14 @@
 		$_firebase ->_nodo = $elements;
 		$_firebase ->setTweet(strval($path));
 	}
+	
+	$_hashtags = $_firebase->getHashtag("hashtag");
+	$_elements = explode("nome",$_hashtags);
+	
+	for($i=0;$i < sizeof($_hashtags);$i++){
+		echo $_hashtags[$i]."<-->";
+	}
+	
+	
+	
 ?>

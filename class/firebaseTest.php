@@ -28,6 +28,7 @@
 		{
 			$this->_firebase = new FirebaseLib(self::DEFAULT_URL, self::DEFAULT_TOKEN);
 		}
+		
 		public function setTimeout($timeout)
 		{
 			$this->_firebase->setTimeout($timeout);
@@ -43,11 +44,22 @@
 			}
 			$this->assertEquals(self::DEFAULT_URI_ERROR, $errorMessage);
 		}
+		
 		public function setTweet($path)
 		{
 			$response = $this->_firebase->set($path,$this->_nodo["_nodo"]);
-			
-			echo $response."<Br>";
 		}		
+		
+		public function setHashtag($path)
+		{
+			$response = $this->_firebase->set($path,$this->_nodo["_nodo"]);
+		}
+
+		public function getHashtag($path)
+		{
+			$response = $this->_firebase->get($path);
+			
+			return $response;
+		}			
 	}
 ?>
