@@ -18,7 +18,7 @@ require_once 'firebaseInterface.php';
 class FirebaseLib implements FirebaseInterface
 {
     private $_baseURI;
-    private $_timeout;
+    private $_timeout = 60;
     private $_token;
     private $_curlHandler;
 
@@ -39,7 +39,7 @@ class FirebaseLib implements FirebaseInterface
         }
 
         $this->setBaseURI($baseURI);
-        $this->setTimeOut(10);
+        $this->setTimeOut($this->_timeout);
         $this->setToken($token);
         $this->initCurlHandler();
     }

@@ -16,12 +16,27 @@ body, html {
   height: 100%;
 }
 
+.lbl-filtro{
+	margin-top: 20px;
+}
+.btn-mining{
+	width: 80px;
+	height: 25px;
+	float: right;
+}
 .tutorial {
   width: 80%;
   margin: 0% auto 0 auto;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   background-color: #f9f9f9;
   max-width: 800px;
+}
+
+.tutorial .fields {
+  margin: 1% auto 10% auto;
+  width: 95%;
+  height: 100px;
+  background-color: #FFFFFF;
 }
 
 .tutorial .slider {

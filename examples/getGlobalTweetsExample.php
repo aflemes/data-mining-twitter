@@ -8,8 +8,16 @@
 
 	$twitter = new TwitterAPIExchange($settings);
 	$response = $twitter->setGetfield($getfield)
-		->buildOauth($url, $requestMethod)
-		->performRequest();
+						->buildOauth($url, $requestMethod)
+						->performRequest();
 
-	var_dump(json_decode($response));
+	$result = json_decode($response);
+	
+	foreach($result as $tweet)
+	{
+		foreach($tweet as $tweets)
+		{
+			echo var_dump($tweets)."<-----------------><br>";
+		}
+	}
 ?>

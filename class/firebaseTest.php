@@ -7,17 +7,32 @@
 		const DEFAULT_URL = 'https://twitterdata-b072d.firebaseio.com/';
 		const DEFAULT_TOKEN = 'GPqqTFPpI7dvxWeiM4Jp0unEsQyAwF5oDHQyizp0';
 		
+		/**  Location for overloaded data.  */
+		private $_nodo = array();
 		protected $_firebase;
-		protected $_todoMilk = array(
-			'name' => 'Pick the milk',
-			'priority' => 1
-		);
+				
+		public function __set($name, $value)
+		{
+			$this->_nodo[$name] = $value;
+		}
+
+		public function __get($name)
+		{
+			if (array_key_exists($name, $this->_nodo)) {
+				return $this->data[$name];
+			}
+			return null;
+		}
 		
 		public function setUp()
 		{
 			$this->_firebase = new FirebaseLib(self::DEFAULT_URL, self::DEFAULT_TOKEN);
 		}
-		
+		public function setTimeout($timeout)
+		{
+			$this->_firebase->setTimeout($timeout);
+		}
+				
 		public function testNoBaseURI()
 		{
 			$errorMessage = null;
@@ -28,11 +43,11 @@
 			}
 			$this->assertEquals(self::DEFAULT_URI_ERROR, $errorMessage);
 		}
-		public function testSet()
+		public function setTweet($path)
 		{
-			$response = $this->_firebase->set("tweet",$this->_todoMilk);
+			$response = $this->_firebase->set($path,$this->_nodo["_nodo"]);
 			
-			echo $response;
-		}
+			echo $response."<Br>";
+		}		
 	}
 ?>
