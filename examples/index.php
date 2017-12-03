@@ -1,22 +1,17 @@
 <?php
-	$hashtags = array();
-	array_push($hashtags,"Gremio");
-	array_push($hashtags,"overwatch");
-	array_push($hashtags,"cblol");
-	array_push($hashtags,"SaoPaulo");
-	array_push($hashtags,"Palmeiras");
-	array_push($hashtags,"steelers");
-	array_push($hashtags,"NewEnglandPatriots");
+	require_once('../lib/TwitterAPIExchange.php');
+	require_once('../conf/settings.php');
 	
-	$tweet_hashtag = array();
+	$url = 'https://api.twitter.com/1.1/statuses/user_timeline.json';	
+	$getfield = '?q=#Gremio';
+	$requestMethod = 'GET';
 	
-	array_push($hashtags,"Gremio");
-	array_push($hashtags,"Futebol");
-	array_push($hashtags,"MaiordoSul");
-	
-	$result = array_intersect($tweet_hashtag,$hashtags);
-	
-	VAR_DUMP($result);
-	
-	
+	$twitter = new TwitterAPIExchange($settings);
+	$response = $twitter->setGetfield($getfield)
+						->buildOauth($url, $requestMethod)
+						->performRequest();
+
+	$result = json_decode($response);
+	var_dump($result);
+
 ?>

@@ -1,4 +1,13 @@
+API TWITTER PARAMETROS
 
+//Vai buscar os tweets do usuario 'aflemess'
+"?screen_name=aflemess"
+//Vai buscar os tweets com a quantidade informada, limite eh de 200
+"&count=200"
+//Busca conforme a hashtag
+"q=futebol"
+//Busca tweets ate certa data
+"until=YYYY-MM-DD"
 
 
 Array ( [created_at] => Wed Nov 08 21:35:52 +0000 2017 

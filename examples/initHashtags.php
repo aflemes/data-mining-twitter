@@ -6,7 +6,8 @@
 		$_firebase = new firebaseTest();
 		$_firebase->setUp();
 		
-		$_nodo = array(array('nome' => 'Gremio'),
+		$_nodo = array(array('nome' => 'Futebol'),
+					   array('nome' => 'Gremio'),
 				   	   array('nome' => 'Inter'),
 					   array('nome' => 'Flamengo'),
 					   array('nome' => 'Corinthias'),
@@ -30,7 +31,8 @@
 		$_firebase = new firebaseTest();
 		$_firebase->setUp();
 		
-		$_nodo = array(array('nome' => 'NFL'),
+		$_nodo = array(array('nome' => 'FutebolAmericano'),
+					   array('nome' => 'NFL'),
 					   array('nome' => 'NFLBrasil'),
 					   array('nome' => 'PittsburghSteelers'),
 					   array('nome' => '@steelers'),
@@ -57,7 +59,8 @@
 		$_firebase = new firebaseTest();
 		$_firebase->setUp();
 		
-		$_nodo =  array(array('nome' => 'cblol'),
+		$_nodo =  array(array('nome' => 'esports'),
+						array('nome' => 'cblol'),
 					    array('nome' => 'lol'),
 						array('nome' => 'csgo'),
 						array('nome' => 'dota'),
