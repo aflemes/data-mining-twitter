@@ -5,7 +5,7 @@
 	
 	ob_implicit_flush(true);
 	ini_set('max_execution_time', 300);
-	ini_set('error_reporting', E_ERROR);
+	ini_set('error_reporting', E_ALL);
 	
 	/* initialize */
 	/** Set access tokens here - see: https://dev.twitter.com/apps/ **/
@@ -24,6 +24,7 @@
 	function get_tweet($settings,$url,$date){		
 		$getfield = '?q=#Futebol&count=200';
 		if ($date != ""){
+			//7day limit
 			$getfield .= "&until=".$date;
 		}
 		
@@ -91,7 +92,7 @@
 			$_firebase ->_nodo = $elements;
 			$_firebase ->setTweet(strval($path));
 			
-			$lgSalvei == true;
+			$lgSalvei = true;
 		}
 		if ($lgSalvei)
 			echo "Tweets salvos com sucesso"."<br>";
@@ -129,7 +130,7 @@
 		foreach($tweets as $elements){
 			$lgSaveTweet = false;
 			$tweet_hashtags = $elements['_tweetHashTag'];
-			
+
 			//verifica se o tweet sera salvo ou nao
 			if ($tweet_hashtags != null){
 				$result = array_intersect($hashtags, $tweet_hashtags);
@@ -148,14 +149,7 @@
 		return $tweets;
 	}
 
-	$tweets  = get_tweet($settings,$url,'');
-	print_r($tweets["_tweetHashTag"]);
-	$hastags = get_hashtags();
-	$tweets  = filtra_tweets($tweets,$hastags);
-	set_tweet($tweets);	
-	
-	/*
-	$dias_pesquisa = 10;
+	$dias_pesquisa = 7;
 	$now = date('Y-m-d');
 	//
 	$init_date = date('Y-m-d', strtotime('-'.$dias_pesquisa.' day',strtotime($now)));
@@ -163,14 +157,12 @@
 	for ($i=0;$i < $dias_pesquisa;$i++){
 		echo $date."<br>";
 		//
-		//$tweets  = get_tweet($settings,$url,$date);
-		$tweets  = get_tweet($settings,$url,'');
-		print_r($tweets);
+		$tweets  = get_tweet($settings,$url,$date);
 		$hastags = get_hashtags();
 		$tweets  = filtra_tweets($tweets,$hastags);
 		set_tweet($tweets);
 		@ob_flush();
 		//seta nova data
 		$date = date('Y-m-d', strtotime($date .' +1 day'));
-	}*/
+	}
 ?>
