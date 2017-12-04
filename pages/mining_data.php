@@ -59,11 +59,7 @@
 				</div>
 				<div class="console">
 					Console
-					<textarea class="textarea" id="txtConsole">
-						<?php
-							require_once("../examples/getUserExample.php");
-						?>
-					</textarea>				
+					<textarea class="textarea" id="txtConsole"><?php require_once("../examples/getUserExample.php");?></textarea>				
 				</div>
 			</div>
 		</div>
