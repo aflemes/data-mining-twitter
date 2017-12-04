@@ -1,4 +1,9 @@
 <?php
+	return;
+	if ((!isset($_POST["action"])))
+		if (!($_POST["action"] === "minning"))
+			return;
+
 	require_once('../lib/TwitterAPIExchange.php');
 	require_once('../class/Tweet.php');
 	require_once("../class/firebaseTest.php");
