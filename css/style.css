@@ -84,7 +84,7 @@ body, html {
 }
 .tutorial ul li {
   font-family: "Open Sans", sans-serif;
-  font-size: 1rem;
+  font-size: 14px;
   font-weight: 400;
   color: #333;
   display: inline-block;

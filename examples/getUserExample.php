@@ -1,9 +1,4 @@
 <?php
-	return;
-	if ((!isset($_POST["action"])))
-		if (!($_POST["action"] === "minning"))
-			return;
-
 	require_once('../lib/TwitterAPIExchange.php');
 	require_once('../class/Tweet.php');
 	require_once("../class/firebaseTest.php");
@@ -26,13 +21,14 @@
 	
 	/* functions */
 	
-	function get_tweet($settings,$url,$date){		
-		$getfield = '?q=#Futebol&count=200';
+	function get_tweet($settings,$url,$date,$tag){		
+		$getfield = '?q=#'.$tag.'&count=100';
 		if ($date != ""){
 			//7day limit
 			$getfield .= "&until=".$date;
 		}
 		
+		echo "Estou procurando pela tag ".$tag."...\n";
 		$requestMethod = 'GET';
 	
 		$twitter = new TwitterAPIExchange($settings);
@@ -100,9 +96,9 @@
 			$lgSalvei = true;
 		}
 		if ($lgSalvei)
-			echo "Tweets salvos com sucesso"."<br>";
+			echo "Tweets salvos com sucesso!"."\n";
 		else
-			echo "Nenhum tweet sera salvo na base"."<br>";
+			echo "Nenhum tweet sera salvo na base!"."\n";
 	}
 	
 	function get_hashtags(){
@@ -154,7 +150,7 @@
 		return $tweets;
 	}
 
-	$dias_pesquisa = 7;
+	/*$dias_pesquisa = 7;
 	$now = date('Y-m-d');
 	//
 	$init_date = date('Y-m-d', strtotime('-'.$dias_pesquisa.' day',strtotime($now)));
@@ -169,5 +165,12 @@
 		@ob_flush();
 		//seta nova data
 		$date = date('Y-m-d', strtotime($date .' +1 day'));
-	}
+	}*/
+	
+	$tag = $_POST["tag"];
+	$tweets  = get_tweet($settings,$url,'',$tag);
+	$hastags = get_hashtags();
+	$tweets  = filtra_tweets($tweets,$hastags);
+	set_tweet($tweets);
+	@ob_flush();
 ?>
