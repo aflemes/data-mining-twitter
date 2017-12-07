@@ -11,16 +11,19 @@ body, html {
   background-color: #EEEEEE;
 }
 
+#btn-mining{
+	margin-top: 25px;
+}
+#textarea{
+	height: 100%;
+	width: 100%;
+}
+
 .console{
 	background-color: white;
 	height: 60%;
 	width: 95%;
 	margin-left:20px;
-}
-
-.textarea{
-	height: 100%;
-	width: 100%;
 }
 
 .container {

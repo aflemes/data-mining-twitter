@@ -14,7 +14,7 @@
   <script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
   <script type="text/javascript" src="../js/controller.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>  
 	
   <script src="../js/bootstrap-tagsinput.min.js"></script>
 	
@@ -57,17 +57,36 @@
 			
 			<div class="slider">
 				<br>
-				<div class="fields">
-					<br>
-					<div class="lbl-filtro">
-						Filtro
-						<input type="text" id="filtro" name="filtro" data-role="tagsinput" />
-						<input id="btn-mining" class="btn-mining" type="button" value="Mineirar"/>
-					</div>			
-				</div>
-				<div class="console">
-					Console
-					<textarea class="textarea" id="txtConsole"></textarea>				
+				<div class="col-sm-9 col-sm-offset-3 col-md-12 col-md-offset-0 main">
+					<div class="row">
+						<div class="form-group col-md-10">
+							<label for="lbl-filtro">Filtro</label>
+							<input type="text" id="filtro" name="filtro" data-role="tagsinput" />
+						</div>
+						<div id="actions" class="row">
+							<div class="col-md-2">
+								<button type="button" id="btn-mining" class="btn btn-primary btn-miing">Mineirar</button>								
+							</div>
+						</div>							
+					</div>
+					<div class="row">
+						<div class="form-group col-md-4">
+							<label for="lbl-periodo-ini">Período Inicial</label>
+							<input type="date" class="form-control" id="dt-periodo-ini" required>
+						</div>
+						<div class="form-group col-md-4">
+							<label for="lbl-periodo-final">Período Final</label>
+							<input type="date" class="form-control" id="dt-periodo-final" required>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group col-md-12 col-xs-12">
+							<label for="lbl-console">Console</label>				
+							<div class="form-group">
+								<textarea class="form-control" rows="15" id="txtConsole"></textarea>				
+							</div>						
+						</div>
+					</div>					
 				</div>
 			</div>
 			<div class="information">
@@ -76,6 +95,15 @@
 	</div>
 </div>
 	<script language="javascript">
+		$(document).ready(function(){	
+			var periodoFinal = new Date();
+			var periodoInicial = new Date();
+			periodoInicial.setDate(periodoInicial.getDate() - 7);
+			
+			$("#dt-periodo-ini").val(periodoInicial.getFullYear() + "-" + periodoInicial.getMonth() + "-" + periodoInicial.getDate());
+			$("#dt-periodo-final").val(periodoFinal);
+		});
+	
 		$("#btn-mining").click(function(){
 			$("#action").val("minning");
 
