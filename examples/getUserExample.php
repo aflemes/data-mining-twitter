@@ -3,7 +3,6 @@
 	require_once('../class/Tweet.php');
 	require_once("../class/firebaseTest.php");
 	
-	ob_implicit_flush(true);
 	ini_set('max_execution_time', 300);
 	ini_set('error_reporting', E_ALL);
 	
@@ -149,28 +148,18 @@
 		
 		return $tweets;
 	}
-
-	/*$dias_pesquisa = 7;
-	$now = date('Y-m-d');
-	//
-	$init_date = date('Y-m-d', strtotime('-'.$dias_pesquisa.' day',strtotime($now)));
-	$date = $init_date;
-	for ($i=0;$i < $dias_pesquisa;$i++){
-		echo $date."<br>";
-		//
-		$tweets  = get_tweet($settings,$url,$date);
-		$hastags = get_hashtags();
-		$tweets  = filtra_tweets($tweets,$hastags);
-		set_tweet($tweets);
-		@ob_flush();
-		//seta nova data
-		$date = date('Y-m-d', strtotime($date .' +1 day'));
-	}*/
 	
-	$tag = $_POST["tag"];
-	$tweets  = get_tweet($settings,$url,'',$tag);
+	echo "Mineirando...\n";
+	ob_flush();
+	
+	$date = date("Y-m-d", strtotime($_POST["periodo"]));
+	echo $date."\n";
+	//
+	$tweets  = get_tweet($settings,$url,$date,$_POST["tag"]);
 	$hastags = get_hashtags();
 	$tweets  = filtra_tweets($tweets,$hastags);
 	set_tweet($tweets);
-	@ob_flush();
+	flush();
+	//seta nova data
+	$date = date('Y-m-d', strtotime($date .' +1 day'));
 ?>

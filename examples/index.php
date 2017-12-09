@@ -1,17 +1,14 @@
 <?php
-	require_once('../lib/TwitterAPIExchange.php');
-	require_once('../conf/settings.php');
+	ob_implicit_flush(1);
 	
-	$url = 'https://api.twitter.com/1.1/statuses/user_timeline.json';	
-	$getfield = '?q=#Gremio';
-	$requestMethod = 'GET';
+	print ob_get_level ();
 	
-	$twitter = new TwitterAPIExchange($settings);
-	$response = $twitter->setGetfield($getfield)
-						->buildOauth($url, $requestMethod)
-						->performRequest();
+	for ($i=0; $i<10; $i++) {
+		echo $i;
 
-	$result = json_decode($response);
-	var_dump($result);
+		// this is to make the buffer achieve the minimum size in order to flush data
+		echo str_repeat(' ',1024*64);
 
+		sleep(1);
+	}
 ?>

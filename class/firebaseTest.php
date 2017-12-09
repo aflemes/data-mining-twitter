@@ -60,6 +60,13 @@
 			$response = $this->_firebase->get($path);
 			
 			return $response;
-		}			
+		}
+
+		public function getTweet($path)
+		{
+			$response = $this->_firebase->get($path);
+			
+			return $response;
+		}		
 	}
 ?>

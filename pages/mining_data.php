@@ -45,7 +45,12 @@
 			</li>
 			<li>Serviços <i class="fa fa-angle-down"></i>
 				<ul>
-					<li>Minerar Informação [Twitter]</li>
+					<a href=#">
+						<li>Minerar Informação [Twitter]</li>
+					</a>
+					<a href="pages/resultados.php">
+						<li>Resultados [Twitter]</li>
+					</a>
 				</ul>
 			</li>
 			<a href="#"><li>Contato</li></a> 
@@ -59,13 +64,14 @@
 				<br>
 				<div class="col-sm-9 col-sm-offset-3 col-md-12 col-md-offset-0 main">
 					<div class="row">
-						<div class="form-group col-md-10">
+						<div class="form-group col-md-9">
 							<label for="lbl-filtro">Filtro</label>
 							<input type="text" id="filtro" name="filtro" data-role="tagsinput" />
 						</div>
 						<div id="actions" class="row">
-							<div class="col-md-2">
-								<button type="button" id="btn-mining" class="btn btn-primary btn-miing">Mineirar</button>								
+							<div class="col-md-3">
+								<button type="button" id="btn-mining" class="btn btn-primary">Mineirar</button>								
+								<button type="button" id="btn-limpar" class="btn btn-primary">Limpar</button>								
 							</div>
 						</div>							
 					</div>
@@ -100,8 +106,15 @@
 			var periodoInicial = new Date();
 			periodoInicial.setDate(periodoInicial.getDate() - 7);
 			
-			$("#dt-periodo-ini").val(periodoInicial.getFullYear() + "-" + periodoInicial.getMonth() + "-" + periodoInicial.getDate());
-			$("#dt-periodo-final").val(periodoFinal);
+			var day = ("0" + periodoInicial.getDate()).slice(-2);
+			var month = ("0" + (periodoInicial.getMonth() + 1)).slice(-2);
+
+			$("#dt-periodo-ini").val(periodoInicial.getFullYear() + "-" + (month) + "-" + (day));
+			
+			var day = ("0" + periodoFinal.getDate()).slice(-2);
+			var month = ("0" + (periodoFinal.getMonth() + 1)).slice(-2);
+			
+			$("#dt-periodo-final").val(periodoFinal.getFullYear() + "-" + (month) + "-" + (day));
 		});
 	
 		$("#btn-mining").click(function(){
@@ -113,21 +126,52 @@
 			}
 		});
 		
-		function minning(tag){		
-			jQuery.ajax({
-				type: "POST",
-				url: "../examples/getUserExample.php",
-				data: {
-					action: 'minning',
-					tag: tag
-				},
-				success: function (data) {				
-					$("#txtConsole").append(data);
-				},
-				error: function (data) {
-					alert(data);	
-				}
-			});		
+		$("#btn-limpar").click(function(){
+			$("#txtConsole").val("");
+		});
+		
+		function minning(tag){
+			var periodoInicial = new Date($("#dt-periodo-ini").val());
+			var periodoFinal   = new Date($("#dt-periodo-final").val());
+			var timeDiff = Math.abs(periodoFinal.getTime() - periodoInicial.getTime());
+			var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24)); 
+			var periodo;
+			var day;
+			var month;
+			//ta comecando com um dia a menos, vai saber porque
+			var hashtags = tag.split(",");
+			
+			for(j=0;j < hashtags.length;j++){
+				var DataInicio = new Date(periodoInicial);
+				
+				periodoInicial.setDate(periodoInicial.getDate() + 1);
+				
+				for(i=0;i < diffDays; i++){
+					periodoInicial.setDate(periodoInicial.getDate() + 1);
+					
+					day = ("0" + periodoInicial.getDate()).slice(-2);
+					month = ("0" + (periodoInicial.getMonth() + 1)).slice(-2);
+				
+					periodo = periodoInicial.getFullYear() + "-" + (month) + "-" + (day);
+				
+					//faz a chamada
+					jQuery.ajax({
+						type: "POST",
+						url: "../examples/getUserExample.php",
+						data: {
+							action: 'minning',
+							tag: hashtags[j],
+							periodo: periodo
+						},
+						success: function (data) {				
+							$("#txtConsole").append(data);
+						},
+						error: function (data) {
+							alert(data);	
+						}
+					});
+				}				
+			}// fim for each hashtags
 		}		
 	</script>
 </body>
