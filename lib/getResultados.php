@@ -41,8 +41,6 @@
 	
 	$tweets = get_tweets();
 	
-	echo "A pesquisa foi feita com base em ".sizeof($tweets)." tweets!";
-	
 	$_tweetHashTag = array();
 	foreach($tweets as $nodo){
 		array_push($_tweetHashTag,$nodo["_tweetHashTag"]);
@@ -58,20 +56,25 @@
 						"Voleibol" 		   => 0,
 						"Basquete" 		   => 0);
 	
+	
 	foreach($_tweetHashTag as $element){
 		//varre as hashtags do tweet
+		$lgSair = false;
 		foreach($element as $nodo){
 			//varre todos as hashtags da base para encontrar a categoria
 			foreach($hashTags as $hash){
 				if (strcmp($hash["nome"],$nodo) == 0){
 					$resultados[$hash["categoria"]]++;
+					$lgSair = true;
 					break;
 				}
 			}
+			if ($lgSair)
+				break;
 		}
 	}
 	
-	print_r($resultados);
+	echo json_encode($resultados);
 	
 	
 ?>

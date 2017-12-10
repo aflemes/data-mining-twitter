@@ -21,7 +21,7 @@
 	/* functions */
 	
 	function get_tweet($settings,$url,$date,$tag){		
-		$getfield = '?q=#'.$tag.'&count=10';
+		$getfield = '?q=#'.$tag.'&count=200';
 		if ($date != ""){
 			//7day limit
 			$getfield .= "&until=".$date;

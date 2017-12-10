@@ -66,6 +66,8 @@
 					<div class="row">
 						<div class="form-group col-md-12">
 							<label id="lblResultado"></label>
+							<canvas id="bar-chart" width="450" height="200"></canvas>
+							<canvas id="pie-chart" width="450" height="200"></canvas>
 						</div>
 					</div>
 				</div>
@@ -75,21 +77,91 @@
 			</div>
 	</div>
 </div>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 	<script language="javascript">
-		$(document).ready(function(){	
-			jQuery.ajax({
-				type: "POST",
-				url: "../lib/getResultados.php",
+		function montagraficolinha(data){
+			var atletismo = parseInt(data["Atletismo"]);
+			var basquete  = parseInt(data["Basquete"]);
+			var esports   = parseInt(data["ESports"]);
+			var futebol   = parseInt(data["Futebol"]);
+			var futebolamericano = parseInt(data["FutebolAmericano"]);
+			var voleibol = parseInt(data["Voleibol"]);
+			
+			var total = atletismo + basquete + esports + futebol + futebolamericano + voleibol;
+		
+			$("#lblResultado").text("A pesquisa aqui apresentada tem como base " + total + " tweets!");
+			
+			new Chart(document.getElementById("bar-chart"), {
+				type: 'bar',
 				data: {
+				  labels: ["Atletismo", "Basquete", "ESports", "Futebol", "FutebolAmericano", "Voleibol"],
+				  datasets: [
+					{
+					  label: "Quantidade de Tweets",
+					  backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+					  data: [atletismo,basquete,esports,futebol,futebolamericano,voleibol]
+					}
+				  ]
 				},
-				success: function (data) {				
-					$("#lblResultado").text(data);
-				},
-				error: function (data) {
-					alert(data);	
+				options: {
+				  legend: { display: false },
+				  title: {
+					display: true,
+					text: 'Resultados por categoria (Barra)'
+				  }
 				}
 			});
+		}
+		
+		function montagraficopizza(data){
+			var atletismo = parseInt(data["Atletismo"]);
+			var basquete  = parseInt(data["Basquete"]);
+			var esports   = parseInt(data["ESports"]);
+			var futebol   = parseInt(data["Futebol"]);
+			var futebolamericano = parseInt(data["FutebolAmericano"]);
+			var voleibol = parseInt(data["Voleibol"]);
+			
+			var total = atletismo + basquete + esports + futebol + futebolamericano + voleibol;
+		
+			new Chart(document.getElementById("pie-chart"), {
+				type: 'pie',
+				data: {
+				  labels: ["Atletismo", "Basquete", "ESports", "Futebol", "FutebolAmericano", "Voleibol"],
+				  datasets: [
+					{
+					  label: "Porcentagem dos tweets",
+					  backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+					  data: [atletismo,basquete,esports,futebol,futebolamericano,voleibol]
+					}
+				  ]
+				},
+				options: {
+				  title: {
+					display: true,
+					text: 'Resultados por categoria (Pizza)'
+				  }
+				}
+			});
+		}
+		
+		$(document).ready(function(){
+			jQuery.ajax({
+				type: "GET",
+				url: "../lib/getResultados.php",
+				success: function (data) {				
+					montagraficolinha(data);
+					montagraficopizza(data);
+					$(".slider").height(800);
+				},
+				dataType:"json"
+				// error: function (data) {
+					// alert(data);	
+				// }
+			});
 		});
+		
+		
+		
 	</script>
 </body>
 </html>
