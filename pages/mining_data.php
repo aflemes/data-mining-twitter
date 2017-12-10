@@ -146,7 +146,7 @@
 				
 				periodoInicial.setDate(periodoInicial.getDate() + 1);
 				
-				for(i=0;i < diffDays; i++){
+				for(d=0;d < diffDays; d++){
 					periodoInicial.setDate(periodoInicial.getDate() + 1);
 					
 					day = ("0" + periodoInicial.getDate()).slice(-2);
@@ -157,7 +157,7 @@
 					//faz a chamada
 					jQuery.ajax({
 						type: "POST",
-						url: "../examples/getUserExample.php",
+						url: "../lib/TwitterMining.php",
 						data: {
 							action: 'minning',
 							tag: hashtags[j],
@@ -170,7 +170,8 @@
 							alert(data);	
 						}
 					});
-				}				
+				}
+				
 			}// fim for each hashtags
 		}		
 	</script>

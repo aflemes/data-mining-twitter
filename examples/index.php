@@ -1,14 +1,26 @@
 <?php
-	ob_implicit_flush(1);
+	require_once("../class/firebaseTest.php");
 	
-	print ob_get_level ();
+	function get_hashtags(){
+		$_firebase = new firebaseTest();
+		$_firebase->setUp();
+		$_firebase->setTimeout(120);
+		
+		$_hashtags = $_firebase->getHashtag("hashtag");
+		$_hashtags = json_decode($_hashtags);
+		
+		$hashtag = array();
+		foreach($_hashtags as $hash)
+		{
+			$node = json_decode(json_encode($hash),true);	
+			array_push($hashtag,$node["nome"]);
+		}
 	
-	for ($i=0; $i<10; $i++) {
-		echo $i;
-
-		// this is to make the buffer achieve the minimum size in order to flush data
-		echo str_repeat(' ',1024*64);
-
-		sleep(1);
+		return $hashtag;
 	}
+	
+	$hashtag = get_hashtags();
+	
+	print_r($hashtag);
+	
 ?>

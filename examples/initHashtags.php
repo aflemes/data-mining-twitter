@@ -6,21 +6,18 @@
 		$_firebase = new firebaseTest();
 		$_firebase->setUp();
 		
-		$_nodo = array(array('nome' => 'Futebol'),
-					   array('nome' => 'Gremio'),
-				   	   array('nome' => 'Inter'),
-					   array('nome' => 'Flamengo'),
-					   array('nome' => 'Corinthias'),
-					   array('nome' => 'Cruzeiro'),
-					   array('nome' => 'AtleticoMG'),
-					   array('nome' => 'SaoPaulo'),
-					   array('nome' => 'Palmeiras'),
-					   array('nome' => 'Santos'),
-					   array('nome' => 'Brasileirao2017'));
+		$_nodo = array(array('nome' => '#Futebol',
+							 'categoria' => 'Futebol'),
+					   array('nome' => '#Copadobrasil',
+							 'categoria' => 'Futebol'),
+					   array('nome' => '#Libertadores',
+							 'categoria' => 'Futebol'),
+					   array('nome' => '#Brasileirao2017',
+							 'categoria' => 'Futebol'));
 					   
 		foreach($_nodo as $elements){
 			$key_value = hash('md5', $elements["nome"]);
-			$path = "hashtag/futebol/".$key_value;
+			$path = "hashtag/".$key_value;
 			
 			$_firebase->_nodo = $elements;
 			$_firebase->setHashtag(strval($path));
@@ -31,24 +28,18 @@
 		$_firebase = new firebaseTest();
 		$_firebase->setUp();
 		
-		$_nodo = array(array('nome' => 'FutebolAmericano'),
-					   array('nome' => 'NFL'),
-					   array('nome' => 'NFLBrasil'),
-					   array('nome' => 'PittsburghSteelers'),
-					   array('nome' => '@steelers'),
-					   array('nome' => 'DallasCowboys'),
-					   array('nome' => 'São Francisco 49ers'),
-					   array('nome' => '@49ers'),
-					   array('nome' => 'NewEnglandPatriots'),
-					   array('nome' => '@Patriots'),
-					   array('nome' => 'Green Bay Packers'),
-					   array('nome' => '@packers'),
-					   array('nome' => 'New York Giants'),
-					   array('nome' => 'SuperBowl'));
+		$_nodo = array(array('nome' => '#FutebolAmericano',
+							 'categoria' => 'FutebolAmericano'),
+					   array('nome' => '#NFL',
+							 'categoria' => 'FutebolAmericano'),
+					   array('nome' => '#NFLBrasil',
+							 'categoria' => 'FutebolAmericano'),
+					   array('nome' => '#SuperBowl',
+							 'categoria' => 'FutebolAmericano'));
 					   
 	   foreach($_nodo as $elements){
 			$key_value = hash('md5', $elements["nome"]);
-			$path = "hashtag/futebolamericano/".$key_value;
+			$path = "hashtag/".$key_value;
 			
 			$_firebase->_nodo = $elements;
 			$_firebase->setHashtag(strval($path));
@@ -59,27 +50,121 @@
 		$_firebase = new firebaseTest();
 		$_firebase->setUp();
 		
-		$_nodo =  array(array('nome' => 'esports'),
-						array('nome' => 'cblol'),
-					    array('nome' => 'lol'),
-						array('nome' => 'csgo'),
-						array('nome' => 'dota'),
-						array('nome' => 'overwatch'),
-						array('nome' => 'fifa'),
-						array('nome' => 'pes'),
-						array('nome' => 'pugb'));
+		$_nodo =  array(array('nome' => '#ESports',
+							 'categoria' => 'ESports'),
+						array('nome' => '#cblol',
+							 'categoria' => 'ESports'),
+					    array('nome' => '#lol',
+							 'categoria' => 'ESports'),
+						array('nome' => '#csgo',
+							 'categoria' => 'ESports'),
+						array('nome' => '#dota',
+							 'categoria' => 'ESports'),
+						array('nome' => '#overwatch',
+							 'categoria' => 'ESports'),
+						array('nome' => '#fifa',
+							 'categoria' => 'ESports'),
+						array('nome' => '#pes',
+							 'categoria' => 'ESports'),
+						array('nome' => '#wow',
+							 'categoria' => 'ESports'),
+						array('nome' => '#pugb',
+							 'categoria' => 'ESports'));
 					 
 		foreach($_nodo as $elements){
 			$key_value = hash('md5', $elements["nome"]);
-			$path = "hashtag/esports/".$key_value;
+			$path = "hashtag/".$key_value;
 			
 			$_firebase->_nodo = $elements;
 			$_firebase->setHashtag(strval($path));
 		}
 	}
 	
+	function initAtletismo(){
+		$_firebase = new firebaseTest();
+		$_firebase->setUp();
+		
+		$_nodo =  array(array('nome' => '#Atletismo',
+							 'categoria' => 'Atletismo'),
+						array('nome' => '#corrida',
+							 'categoria' => 'Atletismo'));
+					 
+		foreach($_nodo as $elements){
+			$key_value = hash('md5', $elements["nome"]);
+			$path = "hashtag/".$key_value;
+			
+			$_firebase->_nodo = $elements;
+			$_firebase->setHashtag(strval($path));
+		}
+	}
+	
+	function initNatacao(){
+		$_firebase = new firebaseTest();
+		$_firebase->setUp();
+		
+		$_nodo =  array(array('nome' => '#Natacao',
+							 'categoria' => 'Natação'),
+						array('nome' => '#Natação',
+							 'categoria' => 'Natação'));
+					 
+		foreach($_nodo as $elements){
+			$key_value = hash('md5', $elements["nome"]);
+			$path = "hashtag/".$key_value;
+			
+			$_firebase->_nodo = $elements;
+			$_firebase->setHashtag(strval($path));
+		}
+	}
+	
+	function initVoleibol(){
+		$_firebase = new firebaseTest();
+		$_firebase->setUp();
+		
+		$_nodo =  array(array('nome' => '#Voleibol',
+							 'categoria' => 'Voleibol'),
+						array('nome' => '#Volei',
+							 'categoria' => 'Voleibol'),
+						array('nome' => '#volleyball',
+							 'categoria' => 'Voleibol'),
+						 array('nome' => '#volei',
+							 'categoria' => 'Voleibol'),
+						array('nome' => '#superliga',
+							 'categoria' => 'Voleibol'));
+					 
+		foreach($_nodo as $elements){
+			$key_value = hash('md5', $elements["nome"]);
+			$path = "hashtag/".$key_value;
+			
+			$_firebase->_nodo = $elements;
+			$_firebase->setHashtag(strval($path));
+		}
+	}
+	
+	function initBasquete(){
+		$_firebase = new firebaseTest();
+		$_firebase->setUp();
+		
+		$_nodo =  array(array('nome' => '#Basquete',
+							 'categoria' => 'Basquete'),
+						array('nome' => '#NBB',
+							 'categoria' => 'Basquete'));
+					 
+		foreach($_nodo as $elements){
+			$key_value = hash('md5', $elements["nome"]);
+			$path = "hashtag/".$key_value;
+			
+			$_firebase->_nodo = $elements;
+			$_firebase->setHashtag(strval($path));
+		}
+	}
+	
+	
 	//inicio do bloco
 	initFutebol();
 	initFutebolAmericano();
 	initeSports();
+	initAtletismo();
+	initNatacao();
+	initBasquete();
+	initVoleibol();
 ?>
