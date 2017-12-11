@@ -150,10 +150,17 @@
 	echo "Mineirando...\n";
 	ob_flush();
 	
-	$date = date("Y-m-d", strtotime($_POST["periodo"]));
+	$periodo = $_POST["periodo"];
+	$tag 	 = $_POST["tag"];
+	// $periodo = "06-12-2017";
+	// $tag 	 = "#Gremio";
+	
+	
+	$date = date("Y-m-d", strtotime($periodo));
 	echo $date."\n";
 	//
-	$tweets  = get_tweet($settings,$url,$date,$_POST["tag"]);
+	$tweets  = get_tweet($settings,$url,$date,$tag);
+	
 	$hastags = get_hashtags();
 	$tweets  = filtra_tweets($tweets,$hastags);
 	set_tweet($tweets);
