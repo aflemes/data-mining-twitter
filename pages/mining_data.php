@@ -104,6 +104,8 @@
 </div>
 	<script language="javascript">
 		$(document).ready(function(){	
+			alert("Lembrar de testar com a tag gremio periodo 05/12/2017 a 05/12/2017, que nao vai trazer nada, verificar o porque");
+		
 			var periodoFinal = new Date();
 			var periodoInicial = new Date();
 			periodoInicial.setDate(periodoInicial.getDate() - 7);
