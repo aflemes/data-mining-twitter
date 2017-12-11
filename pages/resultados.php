@@ -45,10 +45,10 @@
 			</li>
 			<li>Serviços <i class="fa fa-angle-down"></i>
 				<ul>
-					<a href=#">
+					<a href="mining_data.php">
 						<li>Minerar Informação [Twitter]</li>
 					</a>
-					<a href="pages/resultados.php">
+					<a href="#">
 						<li>Resultados [Twitter]</li>
 					</a>
 				</ul>
@@ -86,6 +86,7 @@
 			var futebol   = parseInt(data["Futebol"]);
 			var futebolamericano = parseInt(data["FutebolAmericano"]);
 			var voleibol = parseInt(data["Voleibol"]);
+			var tenis     = parseInt(data["Tenis"]);
 			
 			var total = atletismo + basquete + esports + futebol + futebolamericano + voleibol;
 		
@@ -119,14 +120,23 @@
 			var esports   = parseInt(data["ESports"]);
 			var futebol   = parseInt(data["Futebol"]);
 			var futebolamericano = parseInt(data["FutebolAmericano"]);
-			var voleibol = parseInt(data["Voleibol"]);
+			var voleibol  = parseInt(data["Voleibol"]);
+			var tenis     = parseInt(data["Tenis"]);
 			
 			var total = atletismo + basquete + esports + futebol + futebolamericano + voleibol;
+			// Percentual
+			atletismo = (atletismo * 100 / total).toFixed(2);
+			basquete  = (basquete * 100 / total).toFixed(2);
+			esports   = (esports * 100 / total).toFixed(2);
+			futebol   = (futebol * 100 / total).toFixed(2);
+			futebolamericano = (futebolamericano * 100 / total).toFixed(2);
+			voleibol = (voleibol * 100 / total).toFixed(2);
+			tenis    = (tenis * 100 / total).toFixed(2);
 		
 			new Chart(document.getElementById("pie-chart"), {
 				type: 'pie',
 				data: {
-				  labels: ["Atletismo", "Basquete", "ESports", "Futebol", "FutebolAmericano", "Voleibol"],
+				  labels: ["Atletismo", "Basquete", "ESports", "Futebol", "Futebol Americano", "Voleibol"],
 				  datasets: [
 					{
 					  label: "Porcentagem dos tweets",

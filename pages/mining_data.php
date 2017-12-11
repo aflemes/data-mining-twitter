@@ -48,12 +48,14 @@
 					<a href=#">
 						<li>Minerar Informação [Twitter]</li>
 					</a>
-					<a href="pages/resultados.php">
+					<a href="resultados.php">
 						<li>Resultados [Twitter]</li>
 					</a>
 				</ul>
 			</li>
-			<a href="#"><li>Contato</li></a> 
+			<a href="contato.html">
+				<li>Contato</li>
+			</a> 
 		</ul>
 		<!--fim menu <!-->
 		<form id="content" action="#" method="post">
@@ -73,7 +75,7 @@
 								<button type="button" id="btn-mining" class="btn btn-primary">Mineirar</button>								
 								<button type="button" id="btn-limpar" class="btn btn-primary">Limpar</button>								
 							</div>
-						</div>							
+						</div>						
 					</div>
 					<div class="row">
 						<div class="form-group col-md-4">
@@ -146,7 +148,7 @@
 				
 				periodoInicial.setDate(periodoInicial.getDate() + 1);
 				
-				for(d=0;d < diffDays; d++){
+				for(d=0;d <= diffDays; d++){
 					periodoInicial.setDate(periodoInicial.getDate() + 1);
 					
 					day = ("0" + periodoInicial.getDate()).slice(-2);
@@ -164,7 +166,7 @@
 							periodo: periodo
 						},
 						success: function (data) {				
-							$("#txtConsole").append(data);
+							$("#txtConsole").val($("#txtConsole").val() + data);
 						},
 						error: function (data) {
 							alert(data);	
@@ -173,7 +175,7 @@
 				}
 				
 			}// fim for each hashtags
-		}		
+		}
 	</script>
 </body>
 </html>
