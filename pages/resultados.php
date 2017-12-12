@@ -80,13 +80,14 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 	<script language="javascript">
 		function montagraficolinha(data){
-			var atletismo = parseInt(data["Atletismo"])  * 10;
-			var basquete  = parseInt(data["Basquete"])   * 10;
-			var esports   = parseInt(data["ESports"])    * 10;
-			var futebol   = parseInt(data["Futebol"])    * 20;
-			var futebolamericano = parseInt(data["FutebolAmericano"]) * 5;
-			var voleibol = parseInt(data["Voleibol"])    * 10;
-			var tenis     = parseInt(data["Tenis"])      * 10;
+			var multiplicador = 10;
+			var atletismo = parseInt(data["Atletismo"])  * multiplicador;
+			var basquete  = parseInt(data["Basquete"])   * multiplicador;
+			var esports   = parseInt(data["ESports"])    * multiplicador;
+			var futebol   = parseInt(data["Futebol"])    * multiplicador * 2;
+			var futebolamericano = parseInt(data["FutebolAmericano"]) * multiplicador / 2;
+			var voleibol = parseInt(data["Voleibol"])    * multiplicador;
+			var tenis     = parseInt(data["Tenis"])      * multiplicador;
 			
 			var total = atletismo + basquete + esports + futebol + futebolamericano + voleibol;
 		
@@ -115,13 +116,14 @@
 		}
 		
 		function montagraficopizza(data){
-			var atletismo = parseInt(data["Atletismo"]) * 10;
-			var basquete  = parseInt(data["Basquete"])  * 10;
-			var esports   = parseInt(data["ESports"])   * 10;
-			var futebol   = parseInt(data["Futebol"])   * 15;
-			var futebolamericano = parseInt(data["FutebolAmericano"]) * 5;
-			var voleibol  = parseInt(data["Voleibol"])  * 10;
-			var tenis     = parseInt(data["Tenis"])     * 10;
+			var multiplicador = 10;
+			var atletismo = parseInt(data["Atletismo"]) * multiplicador;
+			var basquete  = parseInt(data["Basquete"])  * multiplicador;
+			var esports   = parseInt(data["ESports"])   * multiplicador;
+			var futebol   = parseInt(data["Futebol"])   * multiplicador * 2;
+			var futebolamericano = parseInt(data["FutebolAmericano"]) * multiplicador / 2;
+			var voleibol  = parseInt(data["Voleibol"])  * multiplicador;
+			var tenis     = parseInt(data["Tenis"])     * multiplicador;
 			
 			var total = atletismo + basquete + esports + futebol + futebolamericano + voleibol;
 			// Percentual
