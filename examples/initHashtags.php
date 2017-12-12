@@ -13,6 +13,8 @@
 					   array('nome' => '#Libertadores',
 							 'categoria' => 'Futebol'),
 					   array('nome' => '#Brasileirao2017',
+							 'categoria' => 'Futebol'),
+					   array('nome' => '#Brasileirao',
 							 'categoria' => 'Futebol'));
 					   
 		foreach($_nodo as $elements){
@@ -105,6 +107,8 @@
 		$_nodo =  array(array('nome' => '#Natacao',
 							 'categoria' => 'Natação'),
 						array('nome' => '#Natação',
+							 'categoria' => 'Natação'),
+						array('nome' => '#Nado',
 							 'categoria' => 'Natação'));
 					 
 		foreach($_nodo as $elements){
@@ -126,7 +130,11 @@
 							 'categoria' => 'Voleibol'),
 						array('nome' => '#volleyball',
 							 'categoria' => 'Voleibol'),
-						 array('nome' => '#volei',
+						array('nome' => '#volei',
+							 'categoria' => 'Voleibol'),
+						array('nome' => '#Voleibol',
+							 'categoria' => 'Voleibol'),
+						array('nome' => '#vôlei',
 							 'categoria' => 'Voleibol'),
 						array('nome' => '#superliga',
 							 'categoria' => 'Voleibol'));
