@@ -86,6 +86,9 @@
 							<label for="lbl-periodo-final">Período Final</label>
 							<input type="date" class="form-control" id="dt-periodo-final" required>
 						</div>
+						<div class="form-group col-md-4">
+							 <input type="checkbox" checked="false" id="chk-data" style="margin-top:35px;"> Enviar sem período?<br>
+						</div>
 					</div>
 					<div class="row">
 						<div class="form-group col-md-12 col-xs-12">
@@ -98,7 +101,7 @@
 				</div>
 			</div>
 			<div class="information">
-				<p>A simple, clean looking dropdown menu effect achieved using pure CSS. Simple functionality, method can be extended to create a secondary dropdown block with few edits.</p>
+				<p></p>
 			</div>
 	</div>
 </div>
@@ -117,6 +120,7 @@
 			var month = ("0" + (periodoFinal.getMonth() + 1)).slice(-2);
 			
 			$("#dt-periodo-final").val(periodoFinal.getFullYear() + "-" + (month) + "-" + (day));
+			$('#chk-data').prop('checked', false);
 		});
 	
 		$("#btn-mining").click(function(){
@@ -126,6 +130,17 @@
 			for (i = 0; i < tags.length; i++){
 				minning(tags[i]);
 			}
+		});
+		$("#chk-data").click(function(){
+			
+			if ($("#chk-data").is(':checked')){
+				$("#dt-periodo-ini").prop('disabled', true);
+				$("#dt-periodo-final").prop('disabled', true);
+			}
+			else{
+				$("#dt-periodo-ini").prop('disabled', false);
+				$("#dt-periodo-final").prop('disabled', false);
+			}			
 		});
 		
 		$("#btn-limpar").click(function(){
@@ -143,13 +158,22 @@
 			//ta comecando com um dia a menos, vai saber porque
 			var hashtags = tag.split(",");
 			
+			if ($("#chk-data").is(':checked')){
+				diffDays = 0;
+			}
+			
 			for(j=0;j < hashtags.length;j++){
 				var DataInicio = new Date(periodoInicial);
 				
 				periodoInicial.setDate(periodoInicial.getDate() + 1);
 				
 				for(d=0;d <= diffDays; d++){
-					periodoInicial.setDate(periodoInicial.getDate() + 1);
+					if ($("#chk-data").is(':checked')){
+						periodoInicial.setDate(periodoFinal.getDate() + 1);
+					}
+					else{
+						periodoInicial.setDate(periodoInicial.getDate() + 1);
+					}
 					
 					day = ("0" + periodoInicial.getDate()).slice(-2);
 					month = ("0" + (periodoInicial.getMonth() + 1)).slice(-2);

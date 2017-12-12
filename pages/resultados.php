@@ -73,7 +73,7 @@
 				</div>
 			</div>
 			<div class="information">
-				<p>A simple, clean looking dropdown menu effect achieved using pure CSS. Simple functionality, method can be extended to create a secondary dropdown block with few edits.</p>
+				<p></p>
 			</div>
 	</div>
 </div>
@@ -83,7 +83,7 @@
 			var atletismo = parseInt(data["Atletismo"])  * 10;
 			var basquete  = parseInt(data["Basquete"])   * 10;
 			var esports   = parseInt(data["ESports"])    * 10;
-			var futebol   = parseInt(data["Futebol"])    * 15;
+			var futebol   = parseInt(data["Futebol"])    * 20;
 			var futebolamericano = parseInt(data["FutebolAmericano"]) * 5;
 			var voleibol = parseInt(data["Voleibol"])    * 10;
 			var tenis     = parseInt(data["Tenis"])      * 10;
@@ -95,7 +95,7 @@
 			new Chart(document.getElementById("bar-chart"), {
 				type: 'bar',
 				data: {
-				  labels: ["Atletismo", "Basquete", "ESports", "Futebol", "FutebolAmericano", "Voleibol"],
+				  labels: ["Atletismo", "Basquete", "eSports", "Futebol", "Futebol Americano", "Voleibol"],
 				  datasets: [
 					{
 					  label: "Quantidade de Tweets",

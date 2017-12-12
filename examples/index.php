@@ -1,26 +1,16 @@
 <?php
-	require_once("../class/firebaseTest.php");
+	$node = array();
+	array_push($node,"lorem ipsum");
+	array_push($node,"llul");
+	array_push($node,"gremio");
 	
-	function get_hashtags(){
-		$_firebase = new firebaseTest();
-		$_firebase->setUp();
-		$_firebase->setTimeout(120);
-		
-		$_hashtags = $_firebase->getHashtag("hashtag");
-		$_hashtags = json_decode($_hashtags);
-		
-		$hashtag = array();
-		foreach($_hashtags as $hash)
-		{
-			$node = json_decode(json_encode($hash),true);	
-			array_push($hashtag,$node["nome"]);
+	for($i = 0; $i < sizeof($node); $i++){
+		if (!isset($node["text"])){
+			next;
 		}
-	
-		return $hashtag;
+		
+		echo $node["text"];
+		
 	}
-	
-	$hashtag = get_hashtags();
-	
-	print_r($hashtag);
 	
 ?>

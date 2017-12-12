@@ -44,12 +44,10 @@
 			{
 				$node = json_decode(json_encode($tweet),true);				
 				
-				try{
-					if ($node["text"] == ""){
-						break;
-					}
-				}
-				catch(Exception $e){}
+				
+				if ($node["text"] == ""){
+					break;
+				}				
 				
 				//hastags
 				if (strpos($node["text"], '#') !== false) {
@@ -98,7 +96,7 @@
 		if ($lgSalvei)
 			echo "Tweets salvos com sucesso!"."\n";
 		else
-			echo "Nenhum tweet sera salvo na base!"."\n";
+			echo "Nenhum tweet será salvo na base!"."\n";
 	}
 	
 	function get_hashtags(){
